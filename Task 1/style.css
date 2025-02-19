@@ -1,0 +1,110 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+}
+
+/* Internship Container */
+.internship-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+}
+
+/* Heading */
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Internship Grid Layout (2x2) */
+.internship-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Internship Cards */
+.internship-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hover Effect */
+.internship-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Internship Details in Bullet Points */
+ul {
+    list-style-type: disc;
+    text-align: left;
+    padding-left: 20px;
+    color: #555;
+    margin-top: 10px; /* Space above the list */
+}
+
+/* Bullet point items */
+ul li {
+    font-weight: normal; /* Remove bold effect */
+    margin-bottom: 8px; /* Add spacing between bullet points */
+    color: black;
+}
+
+
+/* Buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Blinking Cursor Effect */
+.cursor-blink {
+    width: 50px; 
+    height: 50px;
+    margin-bottom: 10px;
+    animation: blinkCursor 1s infinite;
+}
+
+/* Blinking Animation */
+@keyframes blinkCursor {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .internship-grid {
+        grid-template-columns: 1fr; 
+    }
+}
