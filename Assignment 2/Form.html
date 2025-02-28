@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        .container h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        .password-strength {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form onsubmit="return validateForm()">
+            <label>Full Name</label>
+            <input type="text" id="name" required onkeyup="validateName()">
+            <div id="name-error" class="error"></div>
+
+            <label>Email Address</label>
+            <input type="email" id="email" required>
+
+            <label>Password</label>
+            <input type="password" id="password" onkeyup="checkStrength()" required>
+            <div id="password-strength" class="password-strength"></div>
+
+            <label>Confirm Password</label>
+            <input type="password" id="confirm-password" oninput="validatePasswordMatch()" required>
+            <div id="confirm-password-error" class="error"></div>
+
+            <label>Date of Birth</label>
+            <input type="date" required>
+
+            <label>Gender</label>
+            <select id="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label>Profile Picture</label>
+            <input type="file" id="profile-pic" accept="image/*" onchange="validateImage()" required>
+            <div id="image-error" class="error"></div>
+
+            <input type="checkbox" required> I agree to the Terms and Conditions
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        function validateName() {
+            let name = document.getElementById("name").value.trim();
+            let nameError = document.getElementById("name-error");
+            let regex = /^[A-Za-z]+ [A-Za-z]+$/;  // Ensures at least two words (First & Last Name)
+
+            if (!regex.test(name)) {
+                nameError.innerHTML = "Enter both First and Last Name (alphabets only)";
+                return false;
+            } else {
+                nameError.innerHTML = "";
+                return true;
+            }
+        }
+
+        function checkStrength() {
+            let password = document.getElementById("password").value;
+            let strengthText = document.getElementById("password-strength");
+            let strength = "Weak";
+            let regexStrong = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            let regexMedium = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/;
+            
+            if (regexStrong.test(password)) {
+                strength = "Strong";
+                strengthText.style.color = "green";
+            } else if (regexMedium.test(password)) {
+                strength = "Medium";
+                strengthText.style.color = "orange";
+            } else {
+                strength = "Weak";
+                strengthText.style.color = "red";
+            }
+            
+            strengthText.innerHTML = "Password Strength: " + strength;
+        }
+
+        function validatePasswordMatch() {
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm-password").value;
+            let confirmPasswordError = document.getElementById("confirm-password-error");
+
+            if (confirmPassword.length > 0 && password !== confirmPassword) {
+                confirmPasswordError.innerHTML = "Passwords do not match";
+                return false;
+            } else {
+                confirmPasswordError.innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateImage() {
+            let fileInput = document.getElementById("profile-pic");
+            let imageError = document.getElementById("image-error");
+            let filePath = fileInput.value;
+            let allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+            if (!allowedExtensions.test(filePath)) {
+                imageError.innerHTML = "Only JPG, JPEG, PNG, and GIF files are allowed.";
+                fileInput.value = "";
+                return false;
+            } else {
+                imageError.innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateForm() {
+            return validateName() && validatePasswordMatch() && validateImage();
+        }
+    </script>
+</body>
+</html>
