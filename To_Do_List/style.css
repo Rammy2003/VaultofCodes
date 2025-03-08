@@ -1,0 +1,168 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    /* Updated background image from Pexels with position set to center top 
+       so that the "To Do" text on the notepad is visible */
+    background: url('https://images.pexels.com/photos/20502052/pexels-photo-20502052/free-photo-of-a-coffee-and-a-notebook-on-a-table.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center top fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* To-Do List Box */
+.container {
+    width: 450px;
+    background: rgba(255, 247, 230, 0.95);
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    color: #3E2723;
+}
+
+/* Heading */
+h2 {
+    margin-bottom: 10px;
+    color: #3E2723;
+}
+
+/* Task Input Section */
+.task-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.task-input input[type="datetime-local"] {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #008080;
+    background: #EAF6F6;
+    color: #3E2723;
+}
+
+.task-input input[type="text"],
+.task-input select,
+.task-input button {
+    padding: 8px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 120px;
+    border-radius: 5px;
+    border: 1px solid #008080;
+    background: #EAF6F6;
+    color: #3E2723;
+}
+
+.task-input button {
+    background: #008080;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.task-input button:hover {
+    background: #004D4D;
+}
+
+/* Progress Bar */
+.progress-container {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #D6C2A5;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #008080, #00A896);
+    transition: width 0.5s ease-in-out;
+}
+
+/* Search Bar */
+#search {
+    width: 95%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #008080;
+    border-radius: 5px;
+    background: #EAF6F6;
+    color: #3E2723;
+}
+
+/* Task List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Task Item & Completed Styling */
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-top: 5px;
+    background: #FF9F45; /* Attractive warm orange */
+    border-radius: 5px;
+    flex-wrap: wrap;
+    color: #fff;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* Append green "Completed" label */
+.completed::after {
+    content: " ✓ Completed";
+    color: green;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Checkbox */
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Edit & Delete Buttons */
+.edit-btn, .delete-btn {
+    background: #A52A2A;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+.edit-btn {
+    background: #008080;
+}
+
+/* Warning Message for Expired Dates */
+.warning {
+    color: red;
+    font-size: 12px;
+    margin-top: -5px;
+}

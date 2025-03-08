@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Enhanced To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>To-Do List</h2>
+
+    <!-- Task Input Section -->
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Add a new task">
+      <input type="datetime-local" id="dueDateTime" onchange="validateDate()">
+      <p id="dateWarning" class="warning"></p>
+      <select id="repeatOption">
+        <option value="Never">Never</option>
+        <option value="Daily">Daily</option>
+        <option value="Weekly">Weekly</option>
+        <option value="Monthly">Monthly</option>
+        <option value="Yearly">Yearly</option>
+      </select>
+      <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <label>Progress:</label>
+      <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+      </div>
+      <span id="progress-text">0%</span>
+    </div>
+
+    <!-- Search Bar -->
+    <input type="text" id="search" placeholder="Search tasks..." onkeyup="searchTasks()">
+
+
+    <!-- Task List -->
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
